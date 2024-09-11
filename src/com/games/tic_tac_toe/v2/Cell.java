@@ -3,12 +3,13 @@ package com.games.tic_tac_toe.v2;
 public class Cell {
     private int row;
     private int col;
-    private CellStatus status;
-    private Symbol symbol;
-    public Cell(int row,int col){
+    private CellState state = CellState.EMPTY;
+    private Player player;
+    public Cell(int row, int col, Player nextPlayer){
         this.row = row;
         this.col = col;
-        status = CellStatus.EMPTY;
+        if(nextPlayer != null) state = CellState.FILLED;
+        this.player = nextPlayer;
     }
     public int getRow() {
         return row;
@@ -22,13 +23,16 @@ public class Cell {
     public void setCol(int col) {
         this.col = col;
     }
-    public CellStatus getStatus() {
-        return status;
+    public CellState getState() {
+        return state;
     }
-    public void setStatus(CellStatus status) {
-        this.status = status;
+    public void setStatus(CellState status) {
+        this.state = status;
     }
-    public Symbol getSymbol() {
-        return symbol;
+    public Character getSymbol() {
+        if(state == CellState.EMPTY){
+            return ' ';
+        }
+        return player.getSymbol();
     }
 }

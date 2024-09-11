@@ -6,8 +6,8 @@ public class Player {
         public Player(Symbol symbol) {
             this.symbol = symbol;
         }
-        public Symbol getSymbol() {
-            return symbol;
+        public Character getSymbol() {
+            return symbol.getSymbol();
         }
         public void setSymbol(Symbol symbol) {
             this.symbol = symbol;
